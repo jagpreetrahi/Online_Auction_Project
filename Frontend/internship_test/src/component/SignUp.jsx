@@ -9,9 +9,25 @@ export function SignUp(){
     const [password , setPasword] = useState("");
     
 
-    const handleSumit = (e) => {
-         e.preventDefault()
+    const handleSumit = () => {
+
+       
+   
+         const registerUsers = JSON.parse(localStorage.getItem('users')) || [];
+         const userExits = registerUsers.some(user =>  user.email === userEmail)
+
+
+         if (userExits) {
+            alert("User already exists! Please log in.");
+        } else {
+            const newUser = { email: userEmail, password };
+            registerUsers.push(newUser);
+            localStorage.setItem("users", JSON.stringify(registerUsers)); // Store updated users
+            alert("Signup successful! Please log in.");
+        }
     }
+
+    
 
 
     
@@ -32,7 +48,7 @@ export function SignUp(){
 
             <label htmlFor="" class ='fs-3 mb-3 mt-3' style={{letterSpacing : "3px", fontFamily : "Roboto sans-serif"}}>Password</label>
             <div>
-                <input type="text" style = {{padding : "13px"}} class='mb-3 border border-light rounded-md ' placeholder="Enter Your Password"  onChange={() => setPasword(e.target.value)} required/>
+                <input type="text" style = {{padding : "13px"}} class='mb-3 border border-light rounded-md ' placeholder="Enter Your Password"  onChange={(e) => setPasword(e.target.value)} required/>
             </div>
             
              <button class='text-white bg-primary rounded mt-3 ' onClick={() => navigate('/')} style={{padding : "10px 20px" , letterSpacing : "1px" , border : 'none' , marginLeft : "100px"}}>Sign Up</button>

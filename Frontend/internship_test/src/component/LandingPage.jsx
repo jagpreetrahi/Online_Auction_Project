@@ -27,10 +27,10 @@ export function LandingPage(){
   
       
       <div class="d-flex flex-row mb-3 justify-content-between mt-7" style={{marginTop : "40px"}}>
-          <Card title= {"Jug"} amount={"10,0000"} bidAmount={"0.10"}/>
-          <Card title= {""} amount={"7000"} bidAmount={"0.10"}/>
-          <Card title= {"Ladies One Piece"} amount={"11,0000"} bidAmount={"0.10"}/>
-          <Card title= {"Tractor"} amount={"12,999"} bidAmount={"0.10"}/>
+          <Card title= {" Glass Jug"} amount={"10,0000"} bidAmount={"0.10"} image={'/bug.jpg'}/>
+          <Card title= {"Realme Bud"} amount={"7000"} bidAmount={"0.10"} image={'/buds.jpg'}/>
+          <Card title= {" One Piece"} amount={"11,0000"} bidAmount={"0.10"} image={'/kurti.jpg'}/>
+          <Card title= {"Tractor"} amount={"12,999"} bidAmount={"0.10"} image = {'/dummy.jpg'}/>
 
       </div>
       <div class="text-center" style={{marginTop : "40px"}}>
@@ -40,11 +40,11 @@ export function LandingPage(){
 
       </div>
       
-      <div class="d-flex flex-row mb-3 justify-content-between mt-7" style={{marginTop :"20px"}}>
-          <Card title= {"Jug"} amount={"10,0000"} bidAmount={"0.10"}/>
-          <Card title= {""} amount={"7000"} bidAmount={"0.10"}/>
-          <Card title= {"Ladies One Piece"} amount={"11,0000"} bidAmount={"0.10"}/>
-          <Card title= {"Tractor"} amount={"12,999"} bidAmount={"0.10"}/>
+      <div class="d-flex flex-row mb-3 justify-content-between mt-7" style={{marginTop :"20px"}} >
+          <Card title= {"Speaker"} amount={"10,0000"} bidAmount={"0.10"} image={'/speaker.jpg'}/>
+          <Card title= {"Watch"} amount={"7000"} bidAmount={"0.10"} image={'/watch.jpeg'}/>
+          <Card title= {"Credits"} amount={"11,0000"} bidAmount={"0.10"} image={'/25_credit.jpg'}/>
+          <Card title= {"Roller"} amount={"12,999"} bidAmount={"0.10"} image={'/roller.jpeg'}/>
 
       </div>
 

@@ -16,16 +16,22 @@ export function SignIn(){
 
 
     useEffect(() => {
-        if(userEmail.includes("@email.com") && password){
+
+        const regiterUsers = JSON.parse(localStorage.getItem('users')) || [];
+        const userExits = regiterUsers.find(user => user.email === userEmail && user.password === password)
+        if(userExits){
             setAuthenticate(true);
+            
             setMessage("Login Successfully")
+            return 
         }
         else{
             setAuthenticate(false);
+            
             setMessage("Invalid User")
         }
 
-    }, [])
+    }, [userEmail , password])
 
     return  <div class='border rounded p-2 mb-auto   bg-body-tertiary shadow mx-auto d-flex ' style={{width : "350px", height : "400px" , marginTop :"100px"}}>
         {isAuthenticate ? <div>
@@ -45,7 +51,7 @@ export function SignIn(){
                 <input type="text rounded" required style = {{padding : "13px"}} class='mb-3 border border-light rounded-md '  placeholder="Enter Your Password"  onChange={() => setPasword(e.target.value)} />
             </div>
             
-             <button class='text-white bg-primary rounded mt-3 ' onClick={() => navigate('/')} style={{padding : "10px 20px" , letterSpacing : "1px" , border : 'none' , marginLeft : "100px"}}>Sign In</button>
+             <button class='text-white bg-primary rounded mt-3 '  onClick={() => navigate('/')} style={{padding : "10px 20px" , letterSpacing : "1px" , border : 'none' , marginLeft : "100px"}}>Sign In</button>
         </form>
     </div>
 }

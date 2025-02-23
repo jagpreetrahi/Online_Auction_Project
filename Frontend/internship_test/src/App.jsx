@@ -2,15 +2,15 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
-import { NavBar } from './component/NavBar';
+// import { NavBar } from './component/NavBar';
 import {BrowserRouter , Route , Routes} from 'react-router-dom'
-import {LandingPage} from './component/LandingPage'
+import {LandingPage} from './pages/LandingPage'
 
 import './App.css'
 
 import React from 'react';
-import {SignIn} from './component/SignIn'
-import {SignUp} from './component/SignUp'
+import {SignIn} from './pages/SignIn'
+import {SignUp} from './pages/SignUp'
 
 
 
@@ -22,7 +22,7 @@ function App() {
      
         <BrowserRouter>
         
-          <NavBar/>
+          
           <Routes>
               <Route path='/' element={<LandingPage/>}/>
               

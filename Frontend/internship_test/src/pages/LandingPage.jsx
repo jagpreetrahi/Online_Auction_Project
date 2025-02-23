@@ -1,14 +1,20 @@
-import {Card} from './Card'
+import {Card} from '../component/Card'
+import { NavBar } from '../component/NavBar'
+import { Button } from '../component/Button'
 export function LandingPage(){
 
   return <div>
+     <NavBar/>
       <div class="d-flex flex-row mb-3 justify-content-evenly" style={{marginTop : "70px"}}>
           <div class='main-content'>
               <h1 class='fs-1' style={{letterSpacing : "2px"}}>Online Auction made easy</h1>
               <p class='fs-3 text-secondary' style={{letterSpacing : "1px" , marginTop : "20px"}}>Bid, Sell, and Win on the Premier Online Auction Marketplace</p>
               <p class='fs-4 text-secondary' style={{letterSpacing : "1px"}}>With real-time bidding, automated price tracking, and secure payments, <br />you can bid with confidence, sell with ease, and win big!</p>
               <div className='mt-5 '>
-                <button type="button" class="btn btn-primary" style={{letterSpacing : "1px" , padding : "10px 20px"}}>Start Biding</button>
+                <Button label={"Start Biding"} onClick={ async() => {
+
+                }}/>
+               
                 
               </div>
           </div>
@@ -47,13 +53,7 @@ export function LandingPage(){
           <Card title= {"Roller"} amount={"12,999"} bidAmount={"0.10"} image={'/roller.jpeg'}/>
 
       </div>
-
-     
-     
-    
-
-    
-  </div>
+    </div>
 }
 
 

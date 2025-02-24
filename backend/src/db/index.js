@@ -1,4 +1,4 @@
-const {default : mongoose}  = require('mongoose')
+const {default : mongoose, mongo}  = require('mongoose')
 const bcrypt = require('bcryptjs')
 const URL = 'mongodb://localhost:27017/auction?appName=MongoDB+Compass&directConnection=true&serverSelectionTimeoutMS=2000'
 async function connectDb(){
@@ -38,9 +38,16 @@ userSchema.pre('Save' , function (next){
 
 })
 
+const QuestionSchema = new mongoose.Schema({
+     question : {type : String , required : true , unique : true},
+     answer : {type : String , required : true , unique : true}
+})
+
 const User  = mongoose.model('User' , userSchema);
+const Question = mongoose.model('Question' , QuestionSchema)
 
 module.exports = {
     User,
-    connectDb
+    connectDb,
+    Question
 }

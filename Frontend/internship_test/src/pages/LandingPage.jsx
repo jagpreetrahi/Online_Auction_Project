@@ -1,7 +1,13 @@
 import {Card} from '../component/Card'
 import { NavBar } from '../component/NavBar'
 import { Button } from '../component/Button'
+import { useState } from 'react'
 export function LandingPage(){
+  const [isLogin , setLogin] = useState(false)
+
+  const handleClick = () => {
+    
+  }
 
   return <div>
      <NavBar/>
@@ -11,9 +17,7 @@ export function LandingPage(){
               <p class='fs-3 text-secondary' style={{letterSpacing : "1px" , marginTop : "20px"}}>Bid, Sell, and Win on the Premier Online Auction Marketplace</p>
               <p class='fs-4 text-secondary' style={{letterSpacing : "1px"}}>With real-time bidding, automated price tracking, and secure payments, <br />you can bid with confidence, sell with ease, and win big!</p>
               <div className='mt-5 '>
-                <Button label={"Start Biding"} onClick={ async() => {
-
-                }}/>
+                <Button label={"Start Biding"} onClick={handleClick}/>
                
                 
               </div>

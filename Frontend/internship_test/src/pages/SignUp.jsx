@@ -5,6 +5,7 @@ import { InputBox } from "../component/InputBox";
 import { Heading } from "../component/Heading";
 import { Button } from "../component/Button";
 import { BottomWarning } from "../component/BottomWarning";
+import axios from "axios";
 
 export const SignUp = () => {
     const [firstName , setFirstName] = useState("");
@@ -25,7 +26,7 @@ export const SignUp = () => {
                 <InputBox placeholder={"1234"} label={"Password"} onChange={(e) => setPassword(e.target.value)}/>
                 <div class="pt-4">
                     <Button onClick={async () => {
-                        const response = await axiox.post("http://localhost:3000/api/v1/user/signUp"  , {
+                        const response = await axios.post("http://localhost:3000/api/v1/user/signUp"  , {
                             userEmail,
                             firstName,
                             lastName,

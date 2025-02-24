@@ -19,7 +19,7 @@ export function NavBar(){
           <a class="nav-link active" href="/dashboard">DashBoard</a>
         </li>
         <li class="nav-item fs-5" style={{marginLeft : "35px"}}>
-          <a class="nav-link active" href="/about">About</a>
+          <a class="nav-link active" href="/question">FAQs</a>
         </li>
         <li class="nav-item fs-5" style={{marginLeft : "35px", fontFamily : 'Roboto sans-serif' , letterSpacing : "2px"}}>
           <a class="nav-link active" href="/contact">Contact</a>

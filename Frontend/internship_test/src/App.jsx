@@ -11,6 +11,7 @@ import './App.css'
 import React from 'react';
 import {SignIn} from './pages/SignIn'
 import {SignUp} from './pages/SignUp'
+import { FAQs } from './pages/FAQs';
 
 
 
@@ -29,6 +30,8 @@ function App() {
                 <Route path='/signIn' element={<SignIn/>}/>
                 
                 <Route path='/signUp' element={<SignUp/>}/>
+
+                <Route path='/question' element={<FAQs/>}></Route>
               
           </Routes>
         </BrowserRouter>

@@ -18,6 +18,7 @@ router.post('/signIn' , async (req , res) => {
     
     try {
         const userDetail = userSignInValidate.safeParse(req.body);
+        
         if(!userDetail.success){
             return res.status(400).json({
                 message : userDetail.error.errors
@@ -28,7 +29,8 @@ router.post('/signIn' , async (req , res) => {
         const existingUser =  await User.findOne({
             userEmail : req.body.userEmail
         })
-
+        
+        
         if(!existingUser){
             return res.status(401).json({
                 message : "Invalid user or password"
@@ -37,6 +39,7 @@ router.post('/signIn' , async (req , res) => {
 
         //compare the password
         const isValidPassword = await bcrypt.compare(req.body.password , existingUser.password);
+        
         if(!isValidPassword){
             return res.status(401).json({
                 message : "Invalid Email or password"
@@ -81,28 +84,29 @@ router.post('/signUp' , async (req, res) => {
         }
 
         // check for existing user
-        const userExists = User.findOne({
+        const userExists = await User.findOne({
             userEmail : req.body.userEmail
         })
+        
 
-        if(!userExists){
+        if(userExists){
             return res.status(400).json({
                 message : "User Already Exist"
             })
         }
+        
 
         // create a new user
-        const new_user  = User.create({
+        const new_user  = await User.create({
             userEmail : req.body.userEmail,
             fullName : req.body.fullName,
             password : req.body.password
 
         })
+        
 
         // generate a token 
-        const token = jwt.sign({userId : new_user._id} , JWT.JWT_SECRET , (err) => {
-            if(err) throw err
-        })
+        const token = jwt.sign({userId : new_user._id} , JWT.JWT_SECRET)
 
         return res.status(200).json({
             message : "User Created Successfully",
@@ -110,6 +114,7 @@ router.post('/signUp' , async (req, res) => {
             token : token 
         })
     } catch (error) {
+        console.log("Error is " , error)
          return res.status(500).json({
              message : "Internal Server Error"
          })

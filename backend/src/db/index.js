@@ -1,4 +1,4 @@
-const {default : mongoose, mongo}  = require('mongoose')
+const {default : mongoose}  = require('mongoose')
 const bcrypt = require('bcryptjs')
 const URL = 'mongodb://localhost:27017/auction?appName=MongoDB+Compass&directConnection=true&serverSelectionTimeoutMS=2000'
 async function connectDb(){
@@ -18,24 +18,23 @@ const userSchema = new mongoose.Schema({
     
 })
 
-userSchema.pre('Save' , function (next){
+userSchema.pre('save' , async function (next){
     let user  = this;   //  user instance being save
 
     // hash the password if modified or new one
-    if(!user.isModified('Password')) return next();
+    if(!user.isModified('password')) return next();
 
     // generate  a salt
-    bcrypt.genSalt(10 , (err , salt) => {
-        if(err) throw err;
-        bcrypt.hash(user.password , salt , function (err, hash){
-            if(err) throw err;
-
-            user.password = hash;
-            next()
-        })
-    })
-
-
+    try {
+        const salt = await bcrypt.genSalt(10);
+        user.password = await bcrypt.hash(user.password , salt);
+        next();
+    } catch (error) {
+        console.log("Error is ", error);
+        return next(error);
+    }
+    
+       
 })
 
 const QuestionSchema = new mongoose.Schema({
@@ -43,11 +42,26 @@ const QuestionSchema = new mongoose.Schema({
      answer : {type : String , required : true , unique : true}
 })
 
+const AuctionItemSchema = new mongoose.Schema({
+    itemName : {type : String , requiresd : true , unique : true},
+    itemDescription : {type  : String , requiresd : true , unique : true},
+    highestBidder : {
+        type : mongoose.Schema.Types.ObjectId,
+        ref : 'User'
+    },
+    currentBid : {type : String , required : true , unique : true},
+    closingTime : {type : Date , required : true},
+    isClosed : {type : Boolean , required : true}
+
+})
+
 const User  = mongoose.model('User' , userSchema);
 const Question = mongoose.model('Question' , QuestionSchema)
+const AuctionItem = mongoose.model('AuctionItems' , AuctionItemSchema)
 
 module.exports = {
     User,
     connectDb,
-    Question
+    Question,
+    AuctionItem
 }

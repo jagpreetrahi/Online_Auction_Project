@@ -8,8 +8,8 @@ import { BottomWarning } from "../component/BottomWarning";
 import axios from "axios";
 
 export const SignUp = () => {
-    const [firstName , setFirstName] = useState("");
-    const [lastName , setLastName] = useState("");
+   
+    const [fullName , setFullName] = useState("");
     const [userEmail , setEmail] = useState("");
     const [password , setPassword] = useState("");
     const navigate = useNavigate();
@@ -20,19 +20,18 @@ export const SignUp = () => {
             <div class="rouded bg-white w-80 h-90 p-2 px-4 mt-5 pb-4">
                 <Heading label={"Sign Up"}/>
                 <SubHeading label={"Enter your infromation to create an account"}/>
-                <InputBox placeholder={"John"} label={"First Name"} onChange={(e) => setFirstName(e.target.value)}/>
-                <InputBox placeholder={"Doe"} label={"Last Name"} onChange={(e) => setLastName(e.target.value)}/>
-                <InputBox placeholder={"xyz@gmail.com"} label={"Email"} onChange={(e) => setEmail(e.target.value)}/>
-                <InputBox placeholder={"1234"} label={"Password"} onChange={(e) => setPassword(e.target.value)}/>
+                <InputBox placeholder={"John Doe"} label={"Full Name"} onchange={(e) => setFullName(e.target.value)}/>
+                <InputBox placeholder={"xyz@gmail.com"} label={"Email"} onchange={(e) => setEmail(e.target.value)}/>
+                <InputBox placeholder={"1234"} label={"Password"} onchange={(e) => setPassword(e.target.value)}/>
                 <div class="pt-4">
                     <Button onClick={async () => {
-                        const response = await axios.post("http://localhost:3000/api/v1/user/signUp"  , {
+                        const response = await axios.post("http://localhost:3001/api/v1/user/signUp"  , {
                             userEmail,
-                            firstName,
-                            lastName,
+                            fullName,
                             password
                         });
-                        localStorage.setItems('token' , response.data.token)
+                        console.log("Generated Token:", response.data.token);
+                        localStorage.setItem('token' , response.data.token)
                         navigate("/")
                     }} label={"Sign Up"}/>
                         

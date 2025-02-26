@@ -12,6 +12,7 @@ import React from 'react';
 import {SignIn} from './pages/SignIn'
 import {SignUp} from './pages/SignUp'
 import { FAQs } from './pages/FAQs';
+import {Contact} from './pages/Contact'
 
 
 
@@ -31,7 +32,9 @@ function App() {
                 
                 <Route path='/signUp' element={<SignUp/>}/>
 
-                <Route path='/question' element={<FAQs/>}></Route>
+                <Route path='/question' element={<FAQs/>} />
+
+                <Route path='/contact' element={<Contact/>} />
               
           </Routes>
         </BrowserRouter>

@@ -27,12 +27,11 @@ router.post('/newques' , async(req , res) => {
 
 router.get('/answer' , async(req , res) => {
     
-      const questionText = req.query.ques
+    
       
     try {
-        const questionData  = await Question.findOne({
-            question : questionText
-        })
+        const questionData  = await Question.find();
+       console.log(questionData)
 
         if(!questionData){
             return res.status(404).json({
@@ -41,8 +40,7 @@ router.get('/answer' , async(req , res) => {
         }
 
         return res.status(200).json({
-             question : questionData.question,
-             answer  : questionData.answer
+             questionData
             
         })
     } catch (error) {

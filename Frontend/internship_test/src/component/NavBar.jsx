@@ -4,7 +4,7 @@ export function NavBar(){
 
   const navigate = useNavigate();
 
-    return  <nav class="navbar  navbar-expand-lg bg-primary" data-bs-theme="dark">
+    return  <nav class="navbar navbar-expand-sm  bg-primary" data-bs-theme="dark">
            <div class="container-fluid">
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

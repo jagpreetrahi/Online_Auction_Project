@@ -17,7 +17,7 @@ export const SignUp = () => {
     return <div class="min-vh-100 bg-secondary-subtle d-flex justify-content-center">
          
         <div class="d-flex flex-column justify-content-center">
-            <div class="rouded bg-white w-80 h-90 p-2 px-4 mt-5 pb-4">
+            <div class="rounded-2 bg-white w-80 h-90 p-2 px-4 mt-2 pb-4 shadow-lg">
                 <Heading label={"Sign Up"}/>
                 <SubHeading label={"Enter your infromation to create an account"}/>
                 <InputBox placeholder={"John Doe"} label={"Full Name"} onchange={(e) => setFullName(e.target.value)}/>

@@ -13,7 +13,7 @@ export const SignIn = () => {
     const navigate = useNavigate();
     return <div class="min-vh-100 bg-secondary-subtle d-flex justify-content-center">
         <div class="d-flex flex-column justify-content-center">
-            <div class="rounded w-80 bg-white  px-4 p-2 mt-5">
+            <div class="rounded-2 w-80 bg-white  px-4 p-2 mt-5 shadow-lg">
                  <Heading label = {"Sign In"}/>
                  <SubHeading label={"Enter your credentials to access your account"}/>
                  <InputBox placeholder={"xyz@gmail.com"} label={"Email"} onchange={(e) => setEmail(e.target.value)} />

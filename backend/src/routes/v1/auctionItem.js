@@ -3,24 +3,26 @@ const router = express.Router();
 const {AuctionItem} = require('../../db')
 const  {z}  = require('zod')
 const {UserMiddleware} = require('../../middleware');
-const { useInRouterContext } = require('react-router-dom');
+const {default : mongoose} = require('mongoose');
+
 
 // zod schema for  the auction items details
 const auctionBody = z.object({
     itemName : z.string(),
     itemDescription : z.string(),
-    highestBidder : z.number(),
+    highestBidder : z.string(),
     currentBid : z.number(),
     isClosed : z.boolean(),
-    closingTime : z.date()
+    closingTime :  z.string().datetime()
 
 })
 
-router.post('/auction', UserMiddleware.userValidate ,async(req, res) => {
+router.post('/auction', UserMiddleware.userValidate , async (req, res) => {
     
     try {
         //validate the schema
         const itemsDetails = await auctionBody.safeParse(req.body);
+        
         if(!itemsDetails.success){
             return res.status(400).json({
                 message : "Invalid details for items"
@@ -28,14 +30,20 @@ router.post('/auction', UserMiddleware.userValidate ,async(req, res) => {
         }
 
         // Whether the item is already present or not
-        const existingItem = AuctionItem.findOne({
+        const existingItem = await AuctionItem.findOne({
             itemName : req.body.itemName 
         })
-
+        
+        
         if(existingItem){
             return res.status(400).json({
                 message : "Item already exists"
             })
+        }
+
+        // Ensure the highestBidder have valid objectId
+        if (!mongoose.Types.ObjectId.isValid(req.body.highestBidder)) {
+            return res.status(400).json({ message: "Invalid highestBidder ID" });
         }
 
         // create a new item
@@ -43,18 +51,25 @@ router.post('/auction', UserMiddleware.userValidate ,async(req, res) => {
             itemName : req.body.itemName,
             itemDescription : req.body.itemDescription,
             currentBid : req.body.currentBid,
-            highestBidder : req.body.highestBidder,
+            highestBidder : req.body.highestBidder, 
             closingTime : req.body.closingTime,
             isClosed : req.body.isClosed
 
         })
+
+         // Populate highestBidder field to get user details
+         const populatedItem = await new_item.populate("highestBidder", "fullName");
+
+         
+       
         
         // saving the new_item in database
         await new_item.save();
+        
 
         return res.status(200).json({
             message : "Items created successfully",
-            item : new_item
+            item : populatedItem
         })
 
     } catch (error) {
@@ -115,7 +130,7 @@ router.post('/bid/:id' , UserMiddleware.userValidate , async(req , res) => {
         }
 
         //check the item is closed or not
-        if(findItem.isClosed){
+        if(!findItem.isClosed){
             return res.status(200).json({
                 message : "Auction  closed"
             })
@@ -147,14 +162,5 @@ router.post('/bid/:id' , UserMiddleware.userValidate , async(req , res) => {
         })
     }
 })
-
-
-
-
-
-
-
-
-
 
 module.exports = router;

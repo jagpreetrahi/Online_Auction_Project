@@ -2,9 +2,9 @@ const jwt = require('jsonwebtoken');
 const {JWT} = require('../config')
 
 const userValidate = (req , res ,next) => {
-    const userAuth = req.header.autorization;
-
-    if(!userAuth || userAuth.startsWith('Bearer')){
+    const userAuth = req.headers.authorization;
+    console.log(userAuth)
+    if(!userAuth || !userAuth.startsWith('Bearer')){
         return res.status(400).json({
             message : "Header not provided"
         })

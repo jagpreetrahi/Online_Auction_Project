@@ -58,7 +58,7 @@ function RenderContact() {
       )}
 
       
-      <div className="col-12 col-md-6 w-50 mt-5 rounded-2 shadow-lg p-4">
+      <div className="col-12 col-md-6 w-75 mt-5 rounded-2 shadow-lg p-4">
         <div className="row g-3">
          
           <div className="col-12 col-md-6">

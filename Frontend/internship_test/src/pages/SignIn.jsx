@@ -21,8 +21,8 @@ export const SignIn = () => {
                  <div class="pt-5">
                     <Button onClick = { async() => {
 
-                        if (password.length < 6) {
-                            alert("Password must be at least 6 characters long!");
+                        if (!userEmail || password.length < 6) {
+                            alert("ALl details should be fill ");
                             return;
                         }
                        const response = await axios.post("http://localhost:3001/api/v1/user/signIn" , {

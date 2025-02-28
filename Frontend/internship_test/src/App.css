@@ -1,5 +1,10 @@
 
 
+  
+ 
+
+  
+
 .letter-space {
     letter-spacing : 3px;
     fontFamily : '"Roboto", serif';
@@ -8,12 +13,7 @@
     marginTop : "60px"
 }
 
-.img-fluid{
-    heigth : auto;
-  
-    max-width: 100%;
-    display: block;
-}
+
 
 .card{
     width  : 400px;

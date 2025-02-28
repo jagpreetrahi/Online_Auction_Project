@@ -1,63 +1,89 @@
-import {Card} from '../component/Card'
-import { NavBar } from '../component/NavBar'
-import { Button } from '../component/Button'
-import { useState } from 'react'
-export function LandingPage(){
-  const [isLogin , setLogin] = useState(false)
+import { Card } from "../component/Card";
+import { NavBar } from "../component/NavBar";
+import { Button } from "../component/Button";
+import { useState } from "react";
 
-  const handleClick = () => {
-    
-  }
+export function LandingPage() {
+  const [isLogin, setLogin] = useState(false);
 
-  return <div>
-     <NavBar/>
-      <div class="d-flex flex-row mb-3 justify-content-evenly" style={{marginTop : "70px"}}>
-          <div class='main-content'>
-              <h1 class='fs-1' style={{letterSpacing : "2px"}}>Online Auction made easy</h1>
-              <p class='fs-3 text-secondary' style={{letterSpacing : "1px" , marginTop : "20px"}}>Bid, Sell, and Win on the Premier Online Auction Marketplace</p>
-              <p class='fs-4 text-secondary' style={{letterSpacing : "1px"}}>With real-time bidding, automated price tracking, and secure payments, <br />you can bid with confidence, sell with ease, and win big!</p>
-              <div className='mt-5 '>
-                <Button label={"Start Biding"} onClick={handleClick}/>
-               
-                
-              </div>
-          </div>
-         
-          <div className="home-image">
-              
-            <img src="/infographic.png" class="img-fluid" alt="" />
-              
-           </div>
+  const handleClick = () => {};
+
+  return (
+    <div>
+      <NavBar />
+
+      
+      <div className="container mt-5">
+        <div className="row align-items-center">
           
+          <div className="col-12 col-sm-6 col-md-6   text-start">
+            <h1 className="fs-1" style={{ letterSpacing: "2px", maxWidth: "550px" }}>
+              Online Auction Made Easy
+            </h1>
+            <p className="fs-3 text-secondary mt-3" style={{ letterSpacing: "1px", maxWidth: "550px" }}>
+              Bid, Sell, and Win on the Premier Online Auction Marketplace
+            </p>
+            <p className="fs-4 text-secondary" style={{ maxWidth: "620px" }}>
+              With real-time bidding, automated price tracking, and secure payments, <br />
+              you can bid with confidence, sell with ease, and win big!
+            </p>
+            <div className="mt-4">
+              <Button label={"Start Bidding"} onClick={handleClick} />
+            </div>
+          </div>
+
+          
+          <div className="col-12 col-md-6 d-flex justify-content-md-end">
+            <img src="/infographic.png" className="img-fluid" style={{ maxWidth: "450px" }} alt="Auction Infographic" />
+          </div>
+        </div>
       </div>
 
-      <div class="text-center" style={{marginTop : "150px"}}>
-         <h3 class='fs-1' style={{letterSpacing : "1px"}}>In-Demand Live Auction</h3>
-      </div>
-  
       
-      <div class="d-flex flex-row mb-3 justify-content-between mt-7" style={{marginTop : "40px"}}>
-          <Card title= {" Glass Jug"} amount={"10,0000"} bidAmount={"0.10"} image={'/bug.jpg'}/>
-          <Card title= {"Realme Bud"} amount={"7000"} bidAmount={"0.10"} image={'/buds.jpg'}/>
-          <Card title= {" One Piece"} amount={"11,0000"} bidAmount={"0.10"} image={'/kurti.jpg'}/>
-          <Card title= {"Tractor"} amount={"12,999"} bidAmount={"0.10"} image = {'/dummy.jpg'}/>
+      <div className="container mt-5">
+        <div className="text-center">
+          <h3 className="fs-1">In-Demand Live Auction</h3>
+        </div>
 
+        
+        <div className="row mt-4 g-3">
+          <div className="col-12 col-sm-4 col-md-4 col-lg-5">
+            <Card title="Glass Jug" amount="10,0000" bidAmount="0.10" image="/bug.jpg" />
+          </div>
+          <div className="col-12 col-sm-6 col-md-4 col-lg-3">
+            <Card title="Realme Bud" amount="7000" bidAmount="0.10" image="/buds.jpg" />
+          </div>
+          <div className="col-12 col-sm-6 col-md-4 col-lg-3">
+            <Card title="One Piece" amount="11,0000" bidAmount="0.10" image="/kurti.jpg" />
+          </div>
+          <div className="col-12 col-sm-6 col-md-4 col-lg-3">
+            <Card title="Tractor" amount="12,999" bidAmount="0.10" image="/dummy.jpg" />
+          </div>
+        </div>
       </div>
-      <div class="text-center" style={{marginTop : "40px"}}>
-         
-           <h3 class='fs-1' style={{letterSpacing : "1px"}}>Closed Auction</h3>
-           
 
-      </div>
-      
-      <div class="d-flex flex-row mb-3 justify-content-between mt-7" style={{marginTop :"20px"}} >
-          <Card title= {"Speaker"} amount={"10,0000"} bidAmount={"0.10"} image={'/speaker.jpg'}/>
-          <Card title= {"Watch"} amount={"7000"} bidAmount={"0.10"} image={'/watch.jpeg'}/>
-          <Card title= {"Credits"} amount={"11,0000"} bidAmount={"0.10"} image={'/25_credit.jpg'}/>
-          <Card title= {"Roller"} amount={"12,999"} bidAmount={"0.10"} image={'/roller.jpeg'}/>
+     
+      <div className="container mt-5">
+        <div className="text-center">
+          <h3 className="fs-1">Closed Auction</h3>
+        </div>
 
+        
+        <div className="row mt-4 g-3">
+          <div className="col-12   col-md-3">
+            <Card title="Speaker" amount="10,0000" bidAmount="0.10" image="/speaker.jpg" />
+          </div>
+          <div className="col-12  col-md-3">
+            <Card title="Watch" amount="7000" bidAmount="0.10" image="/watch.jpeg" />
+          </div>
+          <div className="col-12  col-md-3">
+            <Card title="Credits" amount="11,0000" bidAmount="0.10" image="/25_credit.jpg" />
+          </div>
+          <div className="col-12  col-md-3">
+            <Card title="Roller" amount="12,999" bidAmount="0.10" image="/roller.jpeg" />
+          </div>
+        </div>
       </div>
     </div>
+  );
 }
-
-

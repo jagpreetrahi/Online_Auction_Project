@@ -1,34 +1,34 @@
 export const Footer = () => {
 
     return  <footer className="color mt-auto bg-secondary text-white py-4">
-                <div className="container d-flex justify-content-between">
+                <div className="container d-flex justify-content-between ">
                     <div className="row">
-                    <div className="col-md-4 mb-3">
+                    <div className="col-md-6 mb-3">
                         <h5>About Us</h5>
                         <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ac ante mollis quam tristique convallis.
+                         Online Auction  brings buyers and sellers together in a seamless, secure, and competitive bidding environment. Experience real-time auctions, exclusive deals, and a fair marketplace—all in one place!
                         </p>
                     </div>
-                    <div className="col-md-4 mb-3">
+                    <div className="col-md-6 mb-3 ">
                         <h5>Quick Links</h5>
                         <ul className="list-unstyled">
                         <li>
-                            <a href="#" className="text-decoration-none text-white">
+                            <a href="/home" className="text-decoration-none text-white">
                             Home
                             </a>
                         </li>
                         <li>
-                            <a href="#" className="text-decoration-none text-white">
+                            <a href="/dashboard" className="text-decoration-none text-white">
                             DashBoard
                             </a>
                         </li>
                         <li>
-                            <a href="#" className="text-decoration-none text-white">
+                            <a href="/contact" className="text-decoration-none text-white">
                             Contact
                             </a>
                         </li>
                         <li>
-                            <a href="#" className="text-decoration-none text-white">
+                            <a href="/answer" className="text-decoration-none text-white">
                             FAQs
                             </a>
                         </li>

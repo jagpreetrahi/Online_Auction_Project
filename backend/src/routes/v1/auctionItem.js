@@ -21,7 +21,7 @@ router.post('/auction', UserMiddleware.userValidate , async (req, res) => {
     
     try {
         //validate the schema
-        const itemsDetails = await auctionBody.safeParse(req.body);
+        const itemsDetails =  auctionBody.safeParse(req.body);
         
         if(!itemsDetails.success){
             return res.status(400).json({

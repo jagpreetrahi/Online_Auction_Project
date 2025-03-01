@@ -55,13 +55,23 @@ const AuctionItemSchema = new mongoose.Schema({
 
 })
 
+const ContactSchema = new mongoose.Schema({
+    userName : {type : String , required : true , unique : true},
+    userEmail : {type : String , required : true , unique : true},
+    description : {type : String , required : true , unique : true}
+
+})
+
 const User  = mongoose.model('User' , userSchema);
 const Question = mongoose.model('Question' , QuestionSchema)
 const AuctionItem = mongoose.model('AuctionItems' , AuctionItemSchema)
+const ContactDetail = mongoose.model('ContactDetail' , ContactSchema)
 
 module.exports = {
     User,
     connectDb,
     Question,
-    AuctionItem
-}
+    AuctionItem,
+    ContactDetail
+
+}   

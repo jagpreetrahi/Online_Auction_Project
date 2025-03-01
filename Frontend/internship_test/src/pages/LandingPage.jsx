@@ -2,6 +2,7 @@ import { Card } from "../component/Card";
 import { NavBar } from "../component/NavBar";
 import { Button } from "../component/Button";
 import { useState } from "react";
+import { Footer } from "../component/Footer";
 
 export function LandingPage() {
   const [isLogin, setLogin] = useState(false);
@@ -47,16 +48,16 @@ export function LandingPage() {
 
         
         <div className="row mt-4 g-3">
-          <div className="col-12 col-sm-4 col-md-4 col-lg-5">
+          <div className="col-md-4">
             <Card title="Glass Jug" amount="10,0000" bidAmount="0.10" image="/bug.jpg" />
           </div>
-          <div className="col-12 col-sm-6 col-md-4 col-lg-3">
+          <div className="col-md-4">
             <Card title="Realme Bud" amount="7000" bidAmount="0.10" image="/buds.jpg" />
           </div>
-          <div className="col-12 col-sm-6 col-md-4 col-lg-3">
+          <div className="col-md-4">
             <Card title="One Piece" amount="11,0000" bidAmount="0.10" image="/kurti.jpg" />
           </div>
-          <div className="col-12 col-sm-6 col-md-4 col-lg-3">
+          <div className="col-md-4">
             <Card title="Tractor" amount="12,999" bidAmount="0.10" image="/dummy.jpg" />
           </div>
         </div>
@@ -70,20 +71,21 @@ export function LandingPage() {
 
         
         <div className="row mt-4 g-3">
-          <div className="col-12   col-md-3">
+          <div className="col-md-4">
             <Card title="Speaker" amount="10,0000" bidAmount="0.10" image="/speaker.jpg" />
           </div>
-          <div className="col-12  col-md-3">
+          <div className="col-md-4">
             <Card title="Watch" amount="7000" bidAmount="0.10" image="/watch.jpeg" />
           </div>
-          <div className="col-12  col-md-3">
+          <div className="col-md-4">
             <Card title="Credits" amount="11,0000" bidAmount="0.10" image="/25_credit.jpg" />
           </div>
-          <div className="col-12  col-md-3">
+          <div className="col-md-4">
             <Card title="Roller" amount="12,999" bidAmount="0.10" image="/roller.jpeg" />
           </div>
         </div>
       </div>
+      <Footer/>
     </div>
   );
 }

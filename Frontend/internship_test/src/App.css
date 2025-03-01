@@ -1,4 +1,10 @@
 
+
+  
+ 
+
+  
+
 .letter-space {
     letter-spacing : 3px;
     fontFamily : '"Roboto", serif';
@@ -7,8 +13,42 @@
     marginTop : "60px"
 }
 
+.img-fluid{
+    heigth : auto;
+  
+    max-width: 100%;
+    display: block;
+}
 
-.
+.card{
+     width : 300px;
+     display : flex;
+     justify-content : between;
+    min-height: 100px;
+    
+}
+
+.card:hover{
+    transform : scale(1.02)
+}
+
+.lg-color{
+    background-color :#D3A4F9;
+    border  :  none;
+    fontFamily : "Roboto";
+    letterSpacing : "2px";
+    color : white;
+    fontSize : 10px
+}
+
+.lg-color:hover{
+    transform: scale(1.05);
+}
+
+.color{
+    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+}
+
 
 
 
@@ -18,6 +58,17 @@ img {
     max-width: 100%;
     height: auto;
 }
+
+.navbar{
+    background : #D3A4F9;
+}
+
+.dynamic-text {
+    font-family: "Protest Riot", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
 
 
 

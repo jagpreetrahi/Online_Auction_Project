@@ -13,6 +13,7 @@ import {SignIn} from './pages/SignIn'
 import {SignUp} from './pages/SignUp'
 import { FAQs } from './pages/FAQs';
 import {Contact} from './pages/Contact'
+import { DashBoard } from './pages/DashBoard';
 
 
 
@@ -35,6 +36,7 @@ function App() {
                 <Route path='/question' element={<FAQs/>} />
 
                 <Route path='/contact' element={<Contact/>} />
+                <Route path='/dashboard' element={<DashBoard/>} />
               
           </Routes>
         </BrowserRouter>

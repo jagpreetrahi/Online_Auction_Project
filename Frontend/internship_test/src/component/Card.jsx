@@ -5,8 +5,8 @@ export function Card({ title, amount, bidAmount, image }) {
   const [auctionId] = useState(1 + parseInt(Math.random().toFixed(2) * 100));
 
   return (
-    <div className="col-12 col-sm-6  mb-4"> 
-      <div className="card  shadow-sm p-3" style={{ height: "480px" }}>
+    <div className="col-12 col-sm-6 col-md-4 col-lg-3 mb-4"> 
+      <div className="card  shadow-sm p-3" style={{ height: "500px" }}>
         <div>
           <h4 className="mt-4 text-center" style={{ fontSize: "40px", letterSpacing: "2px", fontFamily: "Roboto, sans-serif" }}>
             {title}

@@ -41,51 +41,66 @@ export function LandingPage() {
       </div>
 
       
+      {/* Live Auction Auction */}
       <div className="container d-flex justify-content-center  mt-4 mb-4">
              <h3 style={{letterSpacing : "2px", fontSize : "35px"}}>Live Auction</h3>
-      </div>
-
-        
-        <div className="container mt-4">
-          <div className="row g-3">
-            <div className="col-md-4 ">
-              <Card title="Glass Jug" amount="10,0000" bidAmount="0.10" image="/bug.jpg" />
-            </div>
-            <div className="col-md-4">
-              <Card title="Realme Bud" amount="7000" bidAmount="0.10" image="/buds.jpg" />
-            </div>
-            <div className="col-md-4">
-              <Card title="One Piece" amount="11,0000" bidAmount="0.10" image="/kurti.jpg" />
-            </div>
-            <div className="col-md-4">
-              <Card title="Tractor" amount="12,999" bidAmount="0.10" image="/dummy.jpg" />
-            </div>
-          </div>
-        </div>
-      
-      
-
-     
-        <div className="container d-flex justify-content-center  mt-4 mb-4">
-             <h3 style={{letterSpacing : "2px", fontSize : "35px"}}>Live Auction</h3>
         </div>
 
-        
-        <div className="container mt-4">
-          <div className="row mt-4 g-3">
-            <div className="col-md-4">
-              <Card title="Speaker" amount="10,0000" bidAmount="0.10" image="/speaker.jpg" />
+       {/* Card  container */}
+        <div className="container">
+            <div className="row g-3 d-flex justify-content-center ">
+                <div className="col-12 col-md-4 ">
+                    <Card/>
+                </div>
+                <div className="col-md-4">
+                    <Card/>
+                </div>
+                <div className="col-md-4">
+                    <Card/>
+                </div>
+                <div className="col-md-4">  
+                    <Card/>
+                </div>
+                <div className="col-md-4">  
+                    <Card/>
+                </div>
+                <div className="col-md-4">  
+                    <Card/>
+                </div>
+               
+
             </div>
-            <div className="col-md-4">
-              <Card title="Watch" amount="7000" bidAmount="0.10" image="/watch.jpeg" />
+        </div>
+
+         {/* Demand Auction Auction */}
+         <div className="container d-flex justify-content-center fs-3 mt-5 mb-5">
+             <h1 style={{letterSpacing : "2px", fontSize : "35px"}}>Demand Auction</h1>
+        </div>
+
+       {/* Card  container */}
+        <div className="container mb-4">
+            <div className="row g-3 d-flex justify-content-center ">
+                <div className="col-12 col-md-4 ">
+                    <Card/>
+                </div>
+                <div className="col-md-4">
+                    <Card/>
+                </div>
+                <div className="col-md-4">
+                    <Card/>
+                </div>
+                <div className="col-md-4">  
+                    <Card/>
+                </div>
+                <div className="col-md-4">  
+                    <Card/>
+                </div>
+                <div className="col-md-4">  
+                    <Card/>
+                </div>
+               
+
             </div>
-            <div className="col-md-4">
-              <Card title="Credits" amount="11,0000" bidAmount="0.10" image="/25_credit.jpg" />
-            </div>
-            <div className="col-md-4">
-              <Card title="Roller" amount="12,999" bidAmount="0.10" image="/roller.jpeg" />
-            </div>
-          </div>
         </div>
        
       

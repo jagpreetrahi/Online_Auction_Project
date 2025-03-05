@@ -35,7 +35,7 @@ export function LandingPage() {
   }, [])
 
   const handleClick = () => {
-    navigate('/dashboard')
+    navigate('/signIn')
   };
 
    ;

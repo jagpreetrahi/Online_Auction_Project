@@ -13,17 +13,19 @@ const auctionBody = z.object({
     highestBidder : z.string(),
     currentBid : z.number(),
     isClosed : z.boolean(),
-    closingTime :  z.string().datetime()
+    closingTime :  z.string().datetime(),
+    imageURL : z.string()
 
 })
 
 router.post('/auction' , async (req, res) => {
-    
+     
     try {
         //validate the schema
         const itemsDetails =  auctionBody.safeParse(req.body);
         
         if(!itemsDetails.success){
+            console.log(itemsDetails.data)
             return res.status(400).json({
                 message : "Invalid details for items"
             })
@@ -53,7 +55,8 @@ router.post('/auction' , async (req, res) => {
             currentBid : req.body.currentBid,
             highestBidder : req.body.highestBidder, 
             closingTime : req.body.closingTime,
-            isClosed : req.body.isClosed
+            isClosed : req.body.isClosed,
+            imageURL : req.body.imageURL
 
         })
 
@@ -101,7 +104,7 @@ router.get('/auction/:id' , async(req , res) => {
     
     try {
         const singleItem = req.params.id;
-
+        console.log(singleItem)
         const item = await AuctionItem.findById(singleItem);
         if(!item){
             return res.status(404).json({
@@ -109,8 +112,14 @@ router.get('/auction/:id' , async(req , res) => {
             })
         }
 
+        return res.status(200).json({
+            auctionItem : item
+        })
+
     } catch (error) {
-        
+         return res.status(500).json({
+            error : error.message
+         })
     }
 })
 

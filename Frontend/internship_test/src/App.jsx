@@ -14,6 +14,7 @@ import {SignUp} from './pages/SignUp'
 import { FAQs } from './pages/FAQs';
 import {Contact} from './pages/Contact'
 import { DashBoard } from './pages/DashBoard';
+import {AuctionDetail} from './pages/AuctionDetail'
 
 
 
@@ -38,6 +39,8 @@ function App() {
                 <Route path='/contact' element={<Contact/>} />
                 
                 <Route path='/dashboard' element={<DashBoard/>} />
+
+                <Route path='/auctionDetail' element={<AuctionDetail/>}/>
               
           </Routes>
         </BrowserRouter>

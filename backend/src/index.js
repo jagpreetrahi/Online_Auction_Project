@@ -5,6 +5,7 @@ const {ServerConfig} = require('./config')
 const UserRoute  = require('./routes');
 const { connectDb } = require('./db');
 const cors = require("cors");
+const path  = require("path")
 
 
 connectDb();
@@ -15,6 +16,7 @@ app.use(express.json());
 
 
 app.use('/api' , UserRoute)
+app.use('/static' , express.static(path.join(__dirname , 'public')))
 
 
 app.listen(ServerConfig.PORT , () => {

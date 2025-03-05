@@ -51,7 +51,8 @@ const AuctionItemSchema = new mongoose.Schema({
     },
     currentBid : {type : String , required : true , unique : true},
     closingTime : {type : Date , required : true},
-    isClosed : {type : Boolean , required : true}
+    isClosed : {type : Boolean , required : true},
+    imageURL : {type : String , required : true}
 
 })
 

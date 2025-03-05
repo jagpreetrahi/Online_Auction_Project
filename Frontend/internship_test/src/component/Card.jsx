@@ -1,43 +1,67 @@
-import { Button } from "../component/Button";
-import { useState } from "react";
+import React from "react";
 
-export function Card({ title, amount, bidAmount, image }) {
-  const [auctionId] = useState(1 + parseInt(Math.random().toFixed(2) * 100));
+import { CounterTimer } from "../component/CounterTime";
 
+
+export const  Card = React.memo(({items}) =>  {
+  const [auctionId] = items.map(() => 1 + parseInt(Math.random().toFixed(2) * 100))
+
+  const handleClick =() => {
+    
+  }
+
+  
   return (
     <>
         <div className="container">
           <div className="row">
+
+            {items.length > 0 ?  ( items.map((item , index) => {
+                  
+                
+                return  <div className="col-12 col-sm-6 col-md-4 col-lg-3 mb-4" key={index}> 
+                  <div className="card  shadow-sm p-3" style={{ height: "450px" }}>
+                    <div className="d-flex flex-col justify-content-between">
+                      <div>
+                          <h4 className="" style={{ fontSize: "25px", letterSpacing: "2px", fontFamily: "Roboto, sans-serif" }}>
+                            {item.itemName}
+                          </h4>
+                      </div>
+                       <div className="me-5">
+                          <p># {auctionId}</p>
+                       </div>
+
+                       <div className="me-5 ml-4">
+                          <span className="border rounded px-2 py-1 focus-ring">{item.isClosed ? <span>Live</span> : <span>Closed</span>}</span>
+                       </div>
+                      
+                    </div>
+      
+                    <img src={''} className="img-fluid mx-auto d-block mt-3" style={{ maxWidth: "180px" }} alt="Product" />
+      
+                    <div className="d-flex">
+                         <p>{item.itemDescription}</p>
+                    </div>
+      
+                    <div className="card-body ">
+                      <div className= "d-flex justify-content-between mb-5">
+                        <h5 className="text-center" style={{ letterSpacing: "2px", fontFamily: "Roboto, sans-serif" }}>
+                          Current Bid : {item.currentBid}
+                        </h5>
+                           
+                      </div>
+                     
+                     <button className="bg-primary text-white border rounded px-2 py-1" style={{letterSpacing : '2px'}} onClick={handleClick}>Make a Deal</button>
+                    </div>
+
+                    <div className="bg-black " style={{marginTop : 'auto'}}>
+                         <CounterTimer auctionTimer={item.closingTime}/>
+                    </div>
+                  </div>
+               </div>
+            })) : (<p>Loaoding :</p>)}
               
-          <div className="col-12 col-sm-6 col-md-4 col-lg-3 mb-4"> 
-            <div className="card  shadow-sm p-3" style={{ height: "500px" }}>
-              <div>
-                <h4 className="mt-4 text-center" style={{ fontSize: "40px", letterSpacing: "2px", fontFamily: "Roboto, sans-serif" }}>
-                  {title}
-                </h4>
-                <h5 className="text-center" style={{ letterSpacing: "2px", fontFamily: "Roboto, sans-serif" }}>
-                  MRP: {amount}
-                </h5>
-              </div>
-
-              <img src={image} className="img-fluid mx-auto d-block mt-3" style={{ maxWidth: "180px" }} alt="Product" />
-
-              <div className="card-body text-center">
-                <p>Auction Id: {auctionId}</p>
-                <div className="d-flex justify-content-between">
-                  <span>
-                    Current:
-                    <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" fill="currentColor" className="bi bi-currency-rupee" viewBox="0 0 16 16">
-                      <path d="M4 3.06h2.726c1.22 0 2.12.575 2.325 1.724H4v1.051h5.051C8.855 7.001 8 7.558 6.788 7.558H4v1.317L8.437 14h2.11L6.095 8.884h.855c2.316-.018 3.465-1.476 3.688-3.049H12V4.784h-1.345c-.08-.778-.357-1.335-.793-1.732H12V2H4z" />
-                    </svg>
-                    {bidAmount}
-                  </span>
-                </div>
-
-                <Button label="Make a Deal" onClick={() => {}} />
-              </div>
-            </div>
-         </div>
+         
 
           </div>
 
@@ -46,4 +70,4 @@ export function Card({ title, amount, bidAmount, image }) {
     </>
    
   );
-}
+})

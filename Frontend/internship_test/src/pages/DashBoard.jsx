@@ -1,7 +1,8 @@
-import { useEffect, useState , useRef} from "react"
+import { useEffect, useState , useRef, useMemo} from "react"
 import { NavBar } from "../component/NavBar"
 import { Card } from "../component/Card"
 import { Footer } from "../component/Footer"
+import axios from 'axios'
 
 export const DashBoard = () => {
     
@@ -24,6 +25,41 @@ function DashBoardRender(){
 
     ]
 
+    const [items , setItemsDetail] = useState([]);
+
+
+    useEffect(() => {
+        const handleDetails = async () => {
+
+           try {
+                const response = await axios.get("http://localhost:3001/api/v1/auctionItem/auctions");
+                console.log(response.data)
+                setItemsDetail(response.data)
+           } catch (error) {
+              console.log("Erro is " , error)
+           }
+            
+            
+            
+        }
+        handleDetails()
+    }, [])
+
+    // dynamically add the category for live and demand items
+    const newItems = useMemo(() => items.map((item , index) => ({
+        ...item,
+        category: index % 2 === 0 ? "Live" : "Demand"
+    })),
+       [items]
+    )
+
+    const liveItems = useMemo(() => newItems.filter((item => item.category == "Live")));
+    const demandItems = useMemo(() => newItems.filter((item => item.category == "Demand")));
+
+    
+
+    
+ 
     // track the index of message
     const [currentIndex , SetIndex] = useState(0)
     const intervalRef = useRef(null);
@@ -67,33 +103,15 @@ function DashBoardRender(){
        {/* Card  container */}
         <div className="container">
             <div className="row g-3 d-flex justify-content-center ">
-                <div className="col-12 col-md-4 ">
-                    <Card/>
-                </div>
-                <div className="col-md-4">
-                    <Card/>
-                </div>
-                <div className="col-md-4">
-                    <Card/>
-                </div>
-                <div className="col-md-4">  
-                    <Card/>
-                </div>
-                <div className="col-md-4">  
-                    <Card/>
-                </div>
-                <div className="col-md-4">  
-                    <Card/>
-                </div>
-                <div className="col-md-4">  
-                    <Card/>
-                </div>
-                <div className="col-md-4">  
-                    <Card/>
-                </div>
-                <div className="col-md-4">  
-                    <Card/>
-                </div>
+                {liveItems.length > 0 ? (
+                    liveItems.map((item, index) => (
+                      <div className="col-md-4" key={index}>
+                        <Card items={[item]} />
+                      </div>
+                    ))
+                  ) : (
+                  <p>Loading...</p>
+                )}
 
             </div>
         </div>
@@ -106,33 +124,15 @@ function DashBoardRender(){
        {/* Card  container */}
         <div className="container mb-4">
             <div className="row g-3 d-flex justify-content-center ">
-                <div className="col-12 col-md-4 ">
-                    <Card/>
-                </div>
-                <div className="col-md-4">
-                    <Card/>
-                </div>
-                <div className="col-md-4">
-                    <Card/>
-                </div>
-                <div className="col-md-4">  
-                    <Card/>
-                </div>
-                <div className="col-md-4">  
-                    <Card/>
-                </div>
-                <div className="col-md-4">  
-                    <Card/>
-                </div>
-                <div className="col-md-4">  
-                    <Card/>
-                </div>
-                <div className="col-md-4">  
-                    <Card/>
-                </div>
-                <div className="col-md-4">  
-                    <Card/>
-                </div>
+               {demandItems.length > 0 ? (
+                    demandItems.map((item, index) => (
+                      <div className="col-md-4" key={index}>
+                        <Card items={[item]} /> 
+                      </div>
+                    ))
+                  ) : (
+                  <p>Loading...</p>
+                )}
 
             </div>
         </div>

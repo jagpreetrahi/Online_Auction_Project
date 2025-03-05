@@ -36,6 +36,7 @@ function App() {
                 <Route path='/question' element={<FAQs/>} />
 
                 <Route path='/contact' element={<Contact/>} />
+                
                 <Route path='/dashboard' element={<DashBoard/>} />
               
           </Routes>

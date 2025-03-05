@@ -3,11 +3,42 @@ import { NavBar } from "../component/NavBar";
 import { Button } from "../component/Button";
 import { useState } from "react";
 import { Footer } from "../component/Footer";
+import axios from 'axios'
+import { useEffect , useMemo} from "react";
+import { useNavigate } from "react-router-dom";
+
+
 
 export function LandingPage() {
-  const [isLogin, setLogin] = useState(false);
+ 
+  const [items , setItems] = useState([]);
+  const navigate = useNavigate();
 
-  const handleClick = () => {};
+  useEffect(() => {
+    
+      
+      const handleData = async () => {
+        
+         try {
+          const response = await axios.get("http://localhost:3001/api/v1/auctionItem/auctions")
+           console.log(response.data)
+          setItems(response.data)
+         } catch (error) {
+            console.log("Error is " , error)
+         }
+         
+         
+        
+      }
+
+      handleData()
+  }, [])
+
+  const handleClick = () => {
+    navigate('/dashboard')
+  };
+
+   ;
 
   return (
     <>
@@ -43,65 +74,28 @@ export function LandingPage() {
       
       {/* Live Auction Auction */}
       <div className="container d-flex justify-content-center  mt-4 mb-4">
-             <h3 style={{letterSpacing : "2px", fontSize : "35px"}}>Live Auction</h3>
+             <h3 style={{letterSpacing : "2px", fontSize : "35px"}}>Demand Auction</h3>
         </div>
 
        {/* Card  container */}
         <div className="container">
             <div className="row g-3 d-flex justify-content-center ">
-                <div className="col-12 col-md-4 ">
-                    <Card/>
-                </div>
-                <div className="col-md-4">
-                    <Card/>
-                </div>
-                <div className="col-md-4">
-                    <Card/>
-                </div>
-                <div className="col-md-4">  
-                    <Card/>
-                </div>
-                <div className="col-md-4">  
-                    <Card/>
-                </div>
-                <div className="col-md-4">  
-                    <Card/>
-                </div>
-               
-
+                {items.length > 0 ? (
+                    items.map((item, index) => (
+                      <div className="col-md-4" key={index}>
+                        <Card items={[item]} />
+                      </div>
+                    ))
+                  ) : (
+                  <p>Loading...</p>
+                )}
+                
             </div>
         </div>
 
-         {/* Demand Auction Auction */}
-         <div className="container d-flex justify-content-center fs-3 mt-5 mb-5">
-             <h1 style={{letterSpacing : "2px", fontSize : "35px"}}>Demand Auction</h1>
-        </div>
+       
 
-       {/* Card  container */}
-        <div className="container mb-4">
-            <div className="row g-3 d-flex justify-content-center ">
-                <div className="col-12 col-md-4 ">
-                    <Card/>
-                </div>
-                <div className="col-md-4">
-                    <Card/>
-                </div>
-                <div className="col-md-4">
-                    <Card/>
-                </div>
-                <div className="col-md-4">  
-                    <Card/>
-                </div>
-                <div className="col-md-4">  
-                    <Card/>
-                </div>
-                <div className="col-md-4">  
-                    <Card/>
-                </div>
-               
-
-            </div>
-        </div>
+      
        
       
       <Footer/>

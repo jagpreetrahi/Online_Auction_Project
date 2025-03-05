@@ -17,7 +17,7 @@ const auctionBody = z.object({
 
 })
 
-router.post('/auction', UserMiddleware.userValidate , async (req, res) => {
+router.post('/auction' , async (req, res) => {
     
     try {
         //validate the schema
@@ -93,7 +93,7 @@ router.get('/auctions',async (req , res) => {
             error : error.message
         })
     }
-})
+}) 
 
 // get a single auction Item by id
 

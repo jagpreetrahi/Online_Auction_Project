@@ -35,10 +35,17 @@ export function LandingPage() {
   }, [])
 
   const handleClick = () => {
-    navigate('/signIn')
+    const handleValue =  localStorage.getItem("token")
+    if(!handleValue){
+      navigate('/signIn')
+    }
+    else{
+      navigate('/dashboard')
+    }
+    
   };
 
-   ;
+   
 
   return (
     <>

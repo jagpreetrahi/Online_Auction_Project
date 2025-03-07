@@ -77,6 +77,7 @@ router.post('/signUp' , async (req, res) => {
 
     try {
         const userData = userSignUpValidate.safeParse(req.body);
+        
         if(!userData.success){
             return res.status(400).json({
                 message : userData.error.errors
@@ -103,6 +104,10 @@ router.post('/signUp' , async (req, res) => {
             password : req.body.password
 
         })
+
+        
+
+
         
 
         // generate a token 
@@ -111,6 +116,7 @@ router.post('/signUp' , async (req, res) => {
         return res.status(200).json({
             message : "User Created Successfully",
             user : new_user,
+            fullName : new_user.fullName,
             token : token 
         })
     } catch (error) {

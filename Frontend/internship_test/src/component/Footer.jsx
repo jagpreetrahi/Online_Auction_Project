@@ -28,7 +28,7 @@ export const Footer = () => {
                             </a>
                         </li>
                         <li>
-                            <a href="/answer" className="text-decoration-none text-white">
+                            <a href="/question" className="text-decoration-none text-white">
                             FAQs
                             </a>
                         </li>

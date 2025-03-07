@@ -49,7 +49,7 @@ const AuctionItemSchema = new mongoose.Schema({
         type : mongoose.Schema.Types.ObjectId,
         ref : 'User'
     },
-    currentBid : {type : String , required : true , unique : true},
+    currentBid : {type : Number , required : true , unique : true},
     closingTime : {type : Date , required : true},
     isClosed : {type : Boolean , required : true},
     imageURL : {type : String , required : true}

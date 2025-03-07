@@ -23,6 +23,14 @@
     transform : scale(1.02)
 }
 
+.user-icon{
+    width : "50px";
+    heigth : "50px";
+    background : "gray";
+    transform : scale(1.05)
+
+}
+
 .lg-color{
     background-color :#D3A4F9;
     border  :  none;

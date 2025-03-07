@@ -15,6 +15,7 @@ import { FAQs } from './pages/FAQs';
 import {Contact} from './pages/Contact'
 import { DashBoard } from './pages/DashBoard';
 import {AuctionDetail} from './pages/AuctionDetail'
+import { Favourites } from './pages/Favourites';
 
 
 
@@ -41,6 +42,8 @@ function App() {
                 <Route path='/dashboard' element={<DashBoard/>} />
 
                 <Route path='/auctionDetail' element={<AuctionDetail/>}/>
+
+                <Route path='/favourite' element={<Favourites/>}/>
               
           </Routes>
         </BrowserRouter>

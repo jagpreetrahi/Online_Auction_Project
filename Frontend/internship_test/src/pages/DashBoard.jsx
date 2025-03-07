@@ -2,6 +2,8 @@ import { useEffect, useState , useRef, useMemo} from "react"
 import { NavBar } from "../component/NavBar"
 import { Card } from "../component/Card"
 import { Footer } from "../component/Footer"
+import {  useNavigate } from "react-router-dom"
+
 import axios from 'axios'
 
 export const DashBoard = () => {
@@ -13,6 +15,8 @@ export const DashBoard = () => {
 
 
 function DashBoardRender(){
+
+    const navigate = useNavigate();
 
     const phrases  = [
         "Race Against the Clock – Place Your Bids Now",
@@ -26,6 +30,11 @@ function DashBoardRender(){
     ]
 
     const [items , setItemsDetail] = useState([]);
+   const sectionRef = useRef(null);
+
+   const currentSection = () => {
+      sectionRef.current?.scrollIntoView({ behavior: "smooth" });
+   }
 
 
     useEffect(() => {
@@ -84,13 +93,13 @@ function DashBoardRender(){
         </div>
 
         <div className="d-flex justify-content-md-center justify-content-center">
-             <button className="lg-color rounded-pill px-3 py-1"> 
+             <button className="lg-color rounded-pill px-3 py-1" onClick={() => navigate('/favourite')}> 
                  Favourites
              </button>
              <button className="lg-color rounded-pill mx-4 px-3 py-1">
                 My Bid
              </button>
-             <button className="lg-color rounded-pill  me-2 px-3 py-1" >
+             <button className="lg-color rounded-pill  me-2 px-3 py-1" onClick={currentSection}>
                 Demand Auction
              </button>
         </div>
@@ -117,7 +126,7 @@ function DashBoardRender(){
         </div>
 
          {/* Demand Auction Auction */}
-         <div className="container d-flex justify-content-center fs-3 mt-5 mb-5">
+         <div className="container d-flex justify-content-center fs-3 mt-5 mb-5" ref={sectionRef}>
              <h1 style={{letterSpacing : "2px", fontSize : "35px"}}>Demand Auction</h1>
         </div>
 

@@ -104,7 +104,7 @@ router.get('/auction/:id' , async(req , res) => {
     
     try {
         const singleItem = req.params.id;
-        console.log(singleItem)
+       
         const item = await AuctionItem.findById(singleItem);
         if(!item){
             return res.status(404).json({

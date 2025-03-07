@@ -30,8 +30,11 @@ export const SignUp = () => {
                             fullName,
                             password
                         });
-                        console.log("Generated Token:", response.data.token);
-                        localStorage.setItem('token' , response.data.token)
+                        
+                        localStorage.setItem('token' , response.data.token);
+                        console.log(response.data.fullName)
+                        console.log(response.data.UserName)
+                        localStorage.setItem('UserName' , response.data.fullName);
                         navigate("/")
                     }} label={"Sign Up"}/>
                         

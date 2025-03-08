@@ -7,6 +7,18 @@ export function NavBar(){
 
     const [showUser , setUser] = useState(false)
 
+    const handleUser = (e) => {
+      e.preventDefault();
+      setUser(!showUser);
+      
+    }
+
+    const handleRemoveUser = (e) => {
+       e.preventDefault();
+       localStorage.removeItem("token");
+    }
+
+
     return  <nav className="navbar navbar-expand-sm" data-bs-theme="dark">
            <div className="container-fluid">
     
@@ -30,14 +42,22 @@ export function NavBar(){
         
        
       </ul>
-    
-      {localStorage.getItem("token") ? <button className="user-icon me-4 d-flex flex-row justify-content-center" onClick={() => setUser(!showUser)} style={{background : 'none' , border :'none'}}><svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
-        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
-        <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
-      </svg></button> :   <form class="d-flex ml-5">
-        <button className="btn btn-outline-tertirary text-white fs-5" type="button" onClick={() => navigate('/signIn')}>Log In</button>
-        <button className="btn btn-outline-tertirary text-white fs-5" type="button" onClick={() => navigate('/signUp')}>Sign Up</button>
-      </form>}
+      <div>
+          {localStorage.getItem("token") ? <div className="d-flex flex-row"><button className="user-icon me-4 d-flex flex-row justify-content-center" onClick={handleUser} style={{background : 'none' , border :'none'}}><svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
+            <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
+          </svg></button> 
+          {showUser &&  (
+                <div className="w-75 h-50 d-flex justify-content-center px-2 py-1 rounded bg-secondary-sublt" >
+                  <button className="px-2 py-1 rounded" onClick={handleRemoveUser}>Log Out</button>
+                </div>
+          )}
+          </div> : <form class="d-flex ml-5">
+            <button className="btn btn-outline-tertirary text-white fs-5" type="button" onClick={() => navigate('/signIn')}>Log In</button>
+            <button className="btn btn-outline-tertirary text-white fs-5" type="button" onClick={() => navigate('/signUp')}>Sign Up</button>
+          </form>}
+      </div>
+      
     </div>
   </div>
      </nav>

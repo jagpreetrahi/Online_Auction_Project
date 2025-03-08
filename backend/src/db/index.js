@@ -1,5 +1,7 @@
 const {default : mongoose}  = require('mongoose')
 const bcrypt = require('bcryptjs')
+const dotenv = require('dotenv');
+dotenv.config();
 
 async function connectDb(){
 
@@ -8,7 +10,7 @@ async function connectDb(){
             useNewUrlParser: true,
             useUnifiedTopology: true
           })
-        console.log("Successfully connected to database")
+        console.log("✅ Connected to MongoDB Atlas")
     } catch (error) {
         console.log("MongoDb connection fails:" , error.message)
     }

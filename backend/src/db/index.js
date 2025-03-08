@@ -4,7 +4,10 @@ const URL = 'mongodb://127.0.0.1:27017/auction?appName=MongoDB+Compass&directCon
 async function connectDb(){
 
     try {
-        await mongoose.connect(URL)
+        await mongoose.connect(URL , {
+            useNewUrlParser: true,
+            useUnifiedTopology: true
+          })
         console.log("Successfully connected to database")
     } catch (error) {
         console.log("MongoDb connection fails:" , error.message)

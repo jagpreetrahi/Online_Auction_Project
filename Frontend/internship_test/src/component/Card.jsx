@@ -37,7 +37,7 @@ export const  Card = React.memo(({items , currentPrice}) =>  {
                   
                 
                 return  <div className="col-12 col-sm-6 col-md-4 col-lg-3 mb-4" key={index}> 
-                  <div className="card  shadow-sm p-3" style={{ height: "540px", width : "300px"}}>
+                  <div className="card  shadow-sm p-3" style={{ height: "610px", width : "300px"}}>
                     <div className="d-flex flex-col justify-content-between">
                       <div>
                           <h4 style={{ fontSize: "21px", letterSpacing: "2px", fontFamily: "Roboto, sans-serif" }}>
@@ -49,7 +49,7 @@ export const  Card = React.memo(({items , currentPrice}) =>  {
                        </div>
 
                        <div className="me-2 ml-4">
-                          <span className="border rounded px-2 py-1 focus-ring">{item.isClosed || item.closingTime > timeValid? <span>CLosed</span> : <span>Live</span>}</span>
+                          <span className="border rounded px-2 py-1 focus-ring">{item.isClosed || item.closingTime < timeValid? <span>Closed</span> : <span>Live</span>}</span>
                        </div>
                       
                     </div>

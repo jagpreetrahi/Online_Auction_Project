@@ -1,6 +1,6 @@
 const {default : mongoose}  = require('mongoose')
 const bcrypt = require('bcryptjs')
-const URL = 'mongodb://localhost:27017/auction?appName=MongoDB+Compass&directConnection=true&serverSelectionTimeoutMS=2000'
+const URL = 'mongodb://127.0.0.1:27017/auction?appName=MongoDB+Compass&directConnection=true&serverSelectionTimeoutMS=2000'
 async function connectDb(){
 
     try {

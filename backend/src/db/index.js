@@ -1,10 +1,10 @@
 const {default : mongoose}  = require('mongoose')
 const bcrypt = require('bcryptjs')
-const URL = 'mongodb://127.0.0.1:27017/auction?appName=MongoDB+Compass&directConnection=true&serverSelectionTimeoutMS=2000'
+
 async function connectDb(){
 
     try {
-        await mongoose.connect(URL , {
+        await mongoose.connect(process.env.MONGO_URI , {
             useNewUrlParser: true,
             useUnifiedTopology: true
           })

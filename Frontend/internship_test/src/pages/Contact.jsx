@@ -24,7 +24,7 @@ function RenderContact() {
     e.preventDefault();
 
     try {
-      const response = await axios.post("http://localhost:3001/api/v1/contact/user", {
+      const response = await axios.post("https://online-auction-project.onrender.com/api/v1/contact/user", {
         userName: name,
         userEmail: email,
         description,

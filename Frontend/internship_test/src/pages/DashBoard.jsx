@@ -41,7 +41,7 @@ function DashBoardRender(){
         const handleDetails = async () => {
 
            try {
-                const response = await axios.get("http://localhost:3001/api/v1/auctionItem/auctions");
+                const response = await axios.get("https://online-auction-project.onrender.com/api/v1/auctionItem/auctions");
                 console.log(response.data)
                 setItemsDetail(response.data)
            } catch (error) {

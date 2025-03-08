@@ -8,7 +8,7 @@ export const FAQs = () => {
 
   useEffect(() => {
     async function fetchData() {
-      const response = await axios.get("http://localhost:3001/api/v1/question/answer");
+      const response = await axios.get("https://online-auction-project.onrender.com/api/v1/question/answer");
       setFAQ(response.data.questionData);
     }
 

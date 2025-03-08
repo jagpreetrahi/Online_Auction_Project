@@ -9,7 +9,7 @@ const path  = require("path")
 
 
 connectDb();
-app.use(cors());
+app.use(cors({origin : "https://online-auction-project-jagpreet-singhs-projects.vercel.app/"}));
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 

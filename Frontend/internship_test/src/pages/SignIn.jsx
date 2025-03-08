@@ -25,7 +25,7 @@ export const SignIn = () => {
                             alert("ALl details should be fill ");
                             return;
                         }
-                       const response = await axios.post("http://localhost:3001/api/v1/user/signIn" , {
+                       const response = await axios.post("https://online-auction-project.onrender.com/api/v1/user/signIn" , {
                                 userEmail, 
                                 password
                         });

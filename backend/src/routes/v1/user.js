@@ -105,14 +105,10 @@ router.post('/signUp' , async (req, res) => {
 
         })
 
-        
+         // generate a token 
+       const token = jwt.sign({userId : new_user._id} , JWT.JWT_SECRET)
 
-
-        
-
-        // generate a token 
-        const token = jwt.sign({userId : new_user._id} , JWT.JWT_SECRET)
-
+       console.log("✅ New user added to DB:", newUser);
         return res.status(200).json({
             message : "User Created Successfully",
             user : new_user,

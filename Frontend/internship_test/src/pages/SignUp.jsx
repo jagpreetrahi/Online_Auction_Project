@@ -25,7 +25,7 @@ export const SignUp = () => {
                 <InputBox placeholder={"1234"} label={"Password"} onchange={(e) => setPassword(e.target.value)}/>
                 <div class="pt-4">
                     <Button onClick={async () => {
-                        const response = await axios.post("http://localhost:3001/api/v1/user/signUp"  , {
+                        const response = await axios.post("https://online-auction-project.onrender.com/api/v1/user/signUp"  , {
                             userEmail,
                             fullName,
                             password
